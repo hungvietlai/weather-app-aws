@@ -1,0 +1,14 @@
+
+replicaCount: 2
+
+image:
+  repository: hungvietlai/weather-app
+  tag: latest
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+
+labels:
+  app: my-weather-app
