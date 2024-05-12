@@ -11,7 +11,6 @@ def capture_state():
     services = []
     ec2 = boto3.client('ec2', region_name='us-east-1')
     eks = boto3.client('eks', region_name='us-east-1')
-    iam = boto3.client('iam', region_name='us-east-1')
 
     vpcs = ec2.describe_vpcs()
     for vpc in vpcs['Vpcs']:
