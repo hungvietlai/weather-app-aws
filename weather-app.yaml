@@ -60,7 +60,7 @@ Resources:
       EnableDnsHostnames: true
       Tags:
         - Key: Name
-          Value: todo_app_vpc
+          Value: weather_app_vpc
 
   PublicSubnet1:
     Type: 'AWS::EC2::Subnet'
@@ -279,7 +279,6 @@ Resources:
     Properties:
       Name: !Ref ClusterName
       RoleArn: !GetAtt EksClusterRole.Arn
-      Version: '1.18'
       ResourcesVpcConfig:
         SecurityGroupIds:
           - !Ref EksSecurityGroup
@@ -312,9 +311,7 @@ Outputs:
 
   SubnetIds:
     Description: "The IDs of the subnets used by the EKS cluster"
-    Value: 
-      - !Ref PublicSubnet1
-      - !Ref PublicSubnet2
+    Value: !Join [ ", ", [ !Ref PublicSubnet1, !Ref PublicSubnet2 ] ]
 
   SecurityGroupId:
     Description: "The ID of the security group used by the EKS cluster"
