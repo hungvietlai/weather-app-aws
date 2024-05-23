@@ -72,7 +72,7 @@ Resources:
       Tags:
         - Key: Name
           Value: my_public_subnet1
-        - Key: kubernetes.io/cluster/${ClusterName}
+        - Key: !Sub 'kubernetes.io/cluster/${ClusterName}'
           Value: shared
         - Key: kubernetes.io/role/elb
           Value: 1
@@ -87,7 +87,7 @@ Resources:
       Tags:
         - Key: Name
           Value: my_public_subnet2
-        - Key: kubernetes.io/cluster/${ClusterName}
+        - Key: !Sub 'kubernetes.io/cluster/${ClusterName}'
           Value: shared
         - Key: kubernetes.io/role/elb
           Value: 1
@@ -101,7 +101,7 @@ Resources:
       Tags:
         - Key: Name
           Value: my_private_subnet1
-        - Key: kubernetes.io/cluster/${ClusterName}
+        - Key: !Sub 'kubernetes.io/cluster/${ClusterName}'
           Value: shared
 
   PrivateSubnet2:
@@ -113,7 +113,7 @@ Resources:
       Tags:
         - Key: Name
           Value: my_private_subnet2
-        - Key: kubernetes.io/cluster/${ClusterName}
+        - Key: !Sub 'kubernetes.io/cluster/${ClusterName}'
           Value: shared
 
   InternetGateway:
