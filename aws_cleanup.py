@@ -11,6 +11,7 @@ def capture_state():
     services = []
     ec2 = boto3.client('ec2', region_name='us-east-1')
     eks = boto3.client('eks', region_name='us-east-1')
+    s3 = boto3.client('s3', region_name='us-east-1')
 
     vpcs = ec2.describe_vpcs()
     for vpc in vpcs['Vpcs']:
@@ -51,6 +52,13 @@ def capture_state():
             cluster_info = eks.describe_cluster(name=cluster_name)
             services.append(f"Cluster Name: {cluster_name} - Status: {cluster_info['cluster']['status']}")
 
+    buckets = s3.list_buckets()
+    for bucket in buckets['Buckets']:
+        bucket_name = bucket['Name']
+        bucket_location = s3.get_bucket_location(Bucket=bucket_name)
+        location = bucket_location['LocationConstraint']
+        services.append(f"S3 Bucket Name: {bucket_name} - Location: {location}")
+        
     return services
 
 #Saves the captured state to a JSON file for later comparison.
@@ -84,3 +92,5 @@ def compare_state(before, after):
 # resources_left_behind, newly_created_resources = compare_states(initial_state, final_state)
 # print("Resources left behind:", resources_left_behind)
 # print("Newly created resources (unexpected):", newly_created_resources)
+
+print(capture_state())
