@@ -81,7 +81,7 @@ aws configure
 
 ```bash
 git clone https://github.com/hungvietlai/weather-app-aws.git
-cd weath-app-aws
+cd weather-app-aws
 ```
 
 #### 1.2 Save your current state of AWS before deployment
