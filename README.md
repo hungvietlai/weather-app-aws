@@ -50,7 +50,7 @@ weather-app
 - eksctl
 - kubectl
 - helm
-- awscdk (if you wish to deploy the stack using AWS CDK)
+- AWSCDK (if you wish to deploy the stack using AWS CDK)
 
 Refer to the following links for guides on "Getting started with Amazon EKS/AWS CDK":
 
@@ -147,7 +147,7 @@ aws eks --region <region_code> update-kubeconfig --name <cluster_name>
       "Effect": "Allow",
       "Principal": {
         "Service": "eks.amazonaws.com",
-        "AWS": "arn:aws:iam::906734544038:user/hunglai"
+        "AWS": "arn:aws:iam::<Account ID>:user/<username>"
       },
       "Action": "sts:AssumeRole"
     }
